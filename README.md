@@ -66,6 +66,12 @@ To run:
 
 Requires python 2.7, Scapy 2.2.0, wireless card with drivers that support packet injection
 
+#####EARLY VERSION WARNING#####
+There is virtually no logging for this as I don't know scapy very well at this point, and
+when it sends beacon frames and probe responses, it sends "Sent 1 packets" to the terminal.
+When we are sending multiple packets a second, this spams your screen with "Sent 1 packets"
+I am currently working on finding a way around this and provide more useful logging.
+
 Make sure you have a wireless NIC in monitor mode with packet injection capabilities. I use 
 the aircrack-ng suite's airmon-ng to do this:
 

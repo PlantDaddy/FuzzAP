@@ -60,6 +60,7 @@ as their documentation is kind of thin, so anything done incorrectly, please let
 airmon-ng was used to create the monitor interfaces which allows packet injection.
 
 I also realize this writeup is longer than the actual code.
+
 ------------------------------------------------------------------------------------------
 
 To run:
@@ -67,6 +68,7 @@ To run:
 Requires python 2.7, Scapy 2.2.0, wireless card with drivers that support packet injection
 
 #####EARLY VERSION WARNING#####
+
 There is virtually no logging for this as I don't know scapy very well at this point, and
 when it sends beacon frames and probe responses, it sends "Sent 1 packets" to the terminal.
 When we are sending multiple packets a second, this spams your screen with "Sent 1 packets"
@@ -75,7 +77,7 @@ I am currently working on finding a way around this and provide more useful logg
 Make sure you have a wireless NIC in monitor mode with packet injection capabilities. I use 
 the aircrack-ng suite's airmon-ng to do this:
 
-# airmon-ng start <interface>
+airmon-ng start <interface>
 
 Which should tell you the new virtual monitoring interface that has been created (something like
 mon 0)
@@ -83,7 +85,7 @@ mon 0)
 FuzzAP.py takes two required arguments. First argument is the interface to use, the second
 is the number of fake access points to generate.
 
-# python fuzzap.py <interface > <number of APs>
+python fuzzap.py <interface > <number of APs>
 
 
 '''

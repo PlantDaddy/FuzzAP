@@ -77,7 +77,7 @@ I am currently working on finding a way around this and provide more useful logg
 Make sure you have a wireless NIC in monitor mode with packet injection capabilities. I use 
 the aircrack-ng suite's airmon-ng to do this:
 
-airmon-ng start <interface>
+airmon-ng start \<interface\>
 
 Which should tell you the new virtual monitoring interface that has been created (something like
 mon 0)
@@ -85,7 +85,7 @@ mon 0)
 FuzzAP.py takes two required arguments. First argument is the interface to use, the second
 is the number of fake access points to generate.
 
-python fuzzap.py <interface > <number of APs>
+python fuzzap.py \<interface \> \<number of APs\>
 
 
 '''

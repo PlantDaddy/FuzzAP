@@ -1,0 +1,65 @@
+FuzzAP
+======
+
+A python script for obfuscating wireless networks
+
+'''
+Warning: I am not a programmer by trade, nor would I consider myself one
+
+The common SSID list was pulled from https://wigle.net/gps/gps/Stat
+The OUI vendor list was parsed from http://standards.ieee.org/develop/regauth/oui/oui.txt 
+for well known vendors (netgear, cisco, linksys, d-link, atheros, ralink, apple)
+
+This idea was created based off of Black Alchemy's FakeAP 
+http://www.blackalchemy.to/project/fakeap/ and Pettinger's airraid 
+http://www.pettingers.org/code/airraid.html
+Some logic for parsing required info from packets was taken from Leandro Meiners 
+(lea@coresecurity.com) at Core Security Technology's Power-Saving DoS script
+
+The main differences between these implementations is hardware requirements and how the 
+fake access point is generated.
+
+FakeAP generates fake access points by creating an access point using iw and ifconfig 
+with a PRISM-based wireless card. The problem is PRISM drivers are mostly deprecated in
+most modern distros. Even with a working driver and a PRISM card, I was unable to get
+FakeAP to work out of the box.
+
+AirRaid is almost identical to how FakeAP works. However, it is tailored towards Atheros-
+based cards and utilizes the madwifi drivers and utilities to create fake access points.
+The Madwifi projects seems to be mostly dying down in favor of ath5/9k drivers.
+Out-of-the-box, AirRaid no longer worked with my atheros card.
+
+Another problem with these implementations, was speed. As each fake access point was
+created, the wireless deviced had to be up-downed and reconfigured.
+
+This implementation differs in a number of ways. It is not totally hardware specific like
+FakeAP or AirRaid. Instead of creating a fake access point by changing the settings for 
+the wireless adapter and having to reset and reconfigure the device, it takes advantage of
+ wireless cards that support packet-injection.
+
+This helps in a number of ways. It supports far more adapters as well as a lot
+of modern drivers that support packet-injection and monitor-mode (rtl8187, ath5k, ath9k,
+most ralink, etc...). In short, any device that has drivers that can allow an adapter to 
+run in monitor-mode via airmon-ng, can use this. Because this utilizes packet-injection 
+instead of actually creating an access-point, it injects packets that look like they are
+from actual access points. 
+
+This is my first project in python, so there are likely going to be flaws, inefficiencies, 
+possible ways to detect which APs are the fake ones. I plan on improving this over time as
+ problems are discovered and enhancements requested.
+
+One may need less than these requirements to make this work, but I know they work with
+the following:
+
+Atheros-based cards using ath5k and ath9k
+Realtek 8187 chipsets(ie Alfa AWUS 036H)
+Most Ralink chipsets
+
+This was coded in python 2.7 with Scapy 2.2.0. I really don't have a firm grasp on Scapy
+as their documentation is kind of thin, so anything done incorrectly, please let me know.
+airmon-ng was used to create the monitor interfaces which allows packet injection.
+
+I also realize this writeup is longer than the actual code.
+
+'''
+

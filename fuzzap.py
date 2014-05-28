@@ -113,7 +113,7 @@ def beacon_frame(bssids,macaddrs,ifce):
 				Dot11Elt(ID="Rates", info='\x82\x84\x0b\x16')/
 				Dot11Elt(ID="DSset", info="\x03")/
 				Dot11Elt(ID="TIM", info="\x00\x01\x00\x00"),
-				iface=ifce, loop=0)
+				iface=ifce, loop=0, verbose=False)
 		time.sleep(.102)
 
 def load_vendor(num_of_aps):
@@ -151,7 +151,7 @@ def probe_response(ssid, macs, rates, stamac, ifce):
 		Dot11Elt(info='\x01', ID=3, len=1)/
 		Dot11Elt(info='\x00', ID=42, len=1)/
 		Dot11Elt(info='\x01\x00\x00\x0f\xac\x02\x02\x00\x00\x0f\xac\x02\x00\x0f\xac\x04\x01\x00\x00\x0f\xac\x02(\x00', ID=48, len=24)/
-		Dot11Elt(info='H`l', ID=50, len=3), iface=ifce, loop=0)
+		Dot11Elt(info='H`l', ID=50, len=3), iface=ifce, loop=0, verbose=False)
 
 def sig_int(sigint, frame):
 	print("Shutting down....")

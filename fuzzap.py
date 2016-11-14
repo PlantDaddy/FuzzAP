@@ -34,7 +34,7 @@
 #  The OUI vendor list was parsed from http://standards.ieee.org/develop/regauth/oui/oui.txt
 #  for well known vendors (netgear, cisco, linksys, d-link, atheros, ralink, apple)
 
-# !/usr/bin/python
+#!/usr/bin/python
 import signal
 import sys
 import time

@@ -82,10 +82,15 @@ airmon-ng start \<interface\>
 Which should tell you the new virtual monitoring interface that has been created (something like
 mon 0)
 
-FuzzAP.py takes two required arguments. First argument is the interface to use, the second
-is the number of fake access points to generate.
+FuzzAP.py takes four required arguments. First argument is the interface to use, the second
+is the number of fake access points to generate, the third is a file of OUIs,
+fourth is a file full of SSIDs
 
-python fuzzap.py \<interface \> \<number of APs\>
+sudo python fuzzap.py \<interface\> \<number of APs\> \<OUI file\> \<ssid file\>
+
+If you want to run this out of the repository:
+
+sudo python fuzzap.py \<interface\> \<number of APs\> common.txt ssid.txt
 
 What it looks like from a client perspective: http://imgur.com/QsoFP1a
 
